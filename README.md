@@ -1,103 +1,93 @@
 # 🛡️ SENTINEL — AI Crime & Safety Analytics System
 
-```
-YOLOv8 · LangChain NLP · Random Forest · Groq LLM · Plotly Heatmaps · Streamlit
-```
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Stack
-
-| Module | Technology | Role |
-|---|---|---|
-| 👁️ Computer Vision | YOLOv8n (Ultralytics) | Weapon / fight detection in CCTV |
-| 💬 NLP | LangChain + Groq | Dataset summarization |
-| 🧠 Machine Learning | Random Forest (scikit-learn) | Crime severity prediction |
-| 🤖 LLM Report | Groq `llama3-8b-8192` | Police intelligence report generation |
-| 📊 Visualization | Plotly + Mapbox | Crime heatmaps & trend charts |
-| 🌐 UI | Streamlit | Full dark-themed dashboard |
+**SENTINEL** is an advanced, AI-powered intelligence dashboard designed for modern crime analytics and real-time safety monitoring. By integrating Computer Vision (YOLOv8), Machine Learning (Random Forest), and Large Language Models (Groq + LangChain), SENTINEL transforms raw crime data into actionable situational awareness.
 
 ---
 
-## Quick Start
+## 🚀 Key Capabilities
 
-### 1. Install dependencies
+*   **👁️ Visual Intelligence**: Real-time weapon and threat detection in CCTV streams using YOLOv8.
+*   **🧠 Predictive Analytics**: 72-hour crime risk forecasting powered by Random Forest regression.
+*   **📊 Spatio-Temporal Insights**: Dynamic Plotly heatmaps and trend analysis across Chicago's 25 districts.
+*   **📋 AI Reporting**: Automated generation of formal police intelligence reports using Llama-3 (Groq).
+*   **📥 Seamless Data Integration**: One-click download of the 8M+ record Chicago Crime dataset via Kaggle.
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Component | Technology |
+|---|---|---|
+| **Vision** | Object Detection | `YOLOv8n` (Ultralytics) |
+| **Logic** | Language Framework | `LangChain` + `Groq LLM` |
+| **Science** | Machine Learning | `scikit-learn` (Random Forest) |
+| **Data** | Analysis | `Pandas` + `NumPy` |
+| **Viz** | Mapping & Charts | `Plotly` + `Mapbox` |
+| **Interface** | Dashboard | `Streamlit` (Custom Glassmorphism CSS) |
+
+---
+
+## 📸 Dashboard Preview
+
+> [!TIP]
+> *Experience the premium dark-themed interface with real-time analytics by running locally or via Streamlit Cloud.*
+
+---
+
+## ⚙️ Quick Start
+
+### 1. Clone & Install
 ```bash
+git clone https://github.com/Hassandav0319/AI-CRIME-ANALYTICS-SYSTEM.git
+cd AI-CRIME-ANALYTICS-SYSTEM
 pip install -r requirements.txt
 ```
 
-### 2. Run the app
+### 2. Configure API Keys (Optional)
+To enable real-time dataset downloads and AI report generation, provide your keys in the sidebar or via terminal:
+```bash
+export GROQ_API_KEY='your_gsk_key'
+```
+
+### 3. Launch Dashboard
 ```bash
 streamlit run app.py
 ```
 
-### 3. Load data (choose one):
-
-**Option A — Kaggle Chicago Crime Dataset (real data)**
-1. Get your API key from https://www.kaggle.com/settings → Account → API → Create Token
-2. Enter `Username` + `API Key` in the sidebar
-3. Click **"Download Chicago Crime Dataset"**
-
-**Option B — Upload your own CSV**
-- Any CSV with columns: `Date`, `Primary Type`, `Latitude`, `Longitude`, `District`
-
-**Option C — Built-in Sample (no setup)**
-- Click **"Use Built-in Sample Data"** in the sidebar
-- Generates 15,000 realistic synthetic Chicago-style records instantly
-
-### 4. Train the model
-- Go to **Tab 1 → Data & Training**
-- Click **"Load / Refresh Dataset"** then **"Train Model"**
-- Results: Accuracy, F1, AUC-ROC, confusion matrix, feature importance
-
-### 5. Explore all 6 tabs
-1. **📥 Data & Training** — load Kaggle CSV, train Random Forest, see metrics
-2. **👁 Computer Vision** — upload CCTV image/video for YOLOv8 weapon detection
-3. **🗺️ Crime Heatmap** — Plotly density heatmap with Mapbox tiles
-4. **🧠 ML Prediction** — 72-hour risk forecast per location
-5. **📊 Trend Analysis** — 7 interactive charts (hourly, weekly, heatmap etc.)
-6. **📋 Intelligence Report** — AI-generated formal police report via Groq
-
 ---
 
-## Optional API Keys
+## 📁 Project Architecture
 
-| Key | Where to get | Used for |
-|---|---|---|
-| `GROQ_API_KEY` | console.groq.com | AI report generation (free tier available) |
-| Kaggle creds | kaggle.com/settings | Real Chicago crime dataset download |
-
-Set as env vars or enter in the sidebar.
-
-```bash
-export GROQ_API_KEY=gsk_your_key_here
-streamlit run app.py
-```
-
----
-
-## Kaggle Dataset
-
-**Chicago Crime Dataset** (`chicago/chicago-crime`)
-- 8M+ real incidents from 2001–present
-- Fields: Date, Block, IUCR, Primary Type, Description, Location, Arrest, District, Ward, Latitude, Longitude
-- URL: https://www.kaggle.com/datasets/chicago/chicago-crime
-
-The app auto-handles column mapping and feature engineering.
-
----
-
-## Project Structure
-
-```
-sentinel/
-├── app.py                   # Main Streamlit application
-├── requirements.txt
-├── README.md
+```text
+SENTINEL/
+├── app.py                # Main Dashboard Engine
+├── packages.txt          # Linux System Dependencies
+├── requirements.txt      # Python Dependencies
 ├── modules/
-│   ├── data_loader.py       # Kaggle download + feature engineering
-│   ├── ml_model.py          # Random Forest training + evaluation
-│   ├── vision.py            # YOLOv8 detection + annotation
-│   ├── visualizations.py    # Plotly heatmaps & trend charts
-│   └── report_gen.py        # Groq LLM + LangChain report generation
-├── data/                    # Downloaded / generated datasets
-└── models/                  # Saved RF model (rf_crime_model.pkl)
+│   ├── vision.py         # YOLOv8 Computer Vision Pipeline
+│   ├── data_loader.py    # Kaggle Integration & Feature Engineering
+│   ├── ml_model.py       # ML Training & Risk Forecasting
+│   ├── visualizations.py # Plotly Heatmaps & Analytics
+│   └── report_gen.py     # AI Intelligence Report Generation
+└── data/                 # Local Cache & Datasets
 ```
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! If you'd like to improve the detection models or add new analytics features, please feel free to fork the repo and submit a PR.
+
+---
+
+## 📜 License
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+---
+
+<p align="center">
+  <i>Developed for the Next Generation of Public Safety Intelligence.</i>
+</p>
